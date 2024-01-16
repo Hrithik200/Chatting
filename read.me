@@ -1,0 +1,46 @@
+
+//server installation 
+npm init -y
+npm i express mongoose cors dotenv 
+// to install particular version  use npm install express@2.x.x 
+npm i nodemon
+
+const express=require('express'); // for using expres
+const cors = require("cors") // for connection of front and back
+const app =express(); // to use expresss 
+app.use(express.json()) // from this we can pass data using express and we can pass json data
+app.use(cors()) // using cors
+
+const port = process.env.PORT || 5000; // defined port to use 
+
+app.listen(port,(req,res)=>{
+  console.log(`Listening of Port ${port}`)
+})
+
+// mongo db
+hrithik.techky 
+name chat-app
+username hrithik
+password  Hello123
+ATLAS_URI=mongodb+srv://hrithik:Hello123@cluster0.yckuhhz.mongodb.net/chatApp
+// when we tried to implement mongoose faced url parser error so used this 
+mongoose.set('strictQuery', false);
+
+///////
+API WORKING
+CRUD 
+GET ,POST ,PUT->to update, DELETE
+
+FOR API in structure
+we will create model,routes,controlles
+first we will write the schema in model
+then make the routes to controlles
+and write the main logic in controllers
+
+
+// npm i bcrypt jsonwebtoken validator
+
+
+
+//error faced while working with this
+Not installed properly validator so getting error validator is not defined
