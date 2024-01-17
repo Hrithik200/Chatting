@@ -21,7 +21,8 @@ const Login = () => {
             </Alert>
           </Stack>
         </Col>
-      </Row></Form></>
+      </Row>
+      </Form></>
   );
 }
 
