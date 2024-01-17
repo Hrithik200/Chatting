@@ -62,20 +62,23 @@ export const AuthContextProvider = ({ children }) => {
     );
 
     // Login User
-    const loginUser = useCallback(async (e) => {
-        e.preventDefault();
-        setIsLoginLoading(true);
-        setLoginError(null);
-        const response = await postRequest(`${baseUrl}/users/login`, JSON.stringify(loginInfo));
-        setIsLoginLoading(false);
+    const loginUser = useCallback(
+        async (e) => {
+            e.preventDefault();
+            setIsLoginLoading(true);
+            setLoginError(null);
+            const response = await postRequest(`${baseUrl}/users/login`, JSON.stringify(loginInfo));
+            setIsLoginLoading(false);
 
-        if (response.error) {
-            return setLoginError(response);
-        }
+            if (response.error) {
+                return setLoginError(response);
+            }
 
-        localStorage.setItem("User", JSON.stringify(response));
-        setUser(response);
-    }, [loginInfo]);
+            localStorage.setItem("User", JSON.stringify(response));
+            setUser(response);
+        },
+        [loginInfo]
+    );
 
     const logOutUser = useCallback(() => {
         localStorage.removeItem("User");
