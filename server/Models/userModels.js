@@ -1,4 +1,4 @@
-const { timeStamp } = require("console");
+const { timeStamps } = require("console");
 const { Module } = require("module");
 const mongoose = require("mongoose");
 
@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
         email: { type: String, required: true, minlength: 3, maxlength: 200, unique: true },
         password: { type: String, required: true, minlength: 3, maxlength: 1024, unique: true },
     },
-    { timeStamp: true }
+    { timestamps: true }
 );
 
 const userModel = mongoose.model("User", userSchema); // User is table name

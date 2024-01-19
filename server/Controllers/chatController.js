@@ -9,6 +9,7 @@ const chatModel = require("../Models/chatModel");
 const createChat = async (req, res) => {
     const { firstId, secondId } = req.body;
     try {
+        // if exisiting chat found
         const chat = await chatModel.findOne({
             members: {
                 $all: [firstId, secondId],
@@ -16,6 +17,7 @@ const createChat = async (req, res) => {
         });
         if (chat) return res.status(200).json(chat);
 
+        // create a new chat i not found
         const newChat = new chatModel({
             members: [firstId, secondId],
         });
@@ -30,6 +32,7 @@ const createChat = async (req, res) => {
 const findUserChats = async (req, res) => {
     const userId = req.params.userId;
     try {
+        // This function is intended to find all chats associated with a specific user.
         const chats = await chatModel.find({
             members: { $in: [userId] },
         });
@@ -43,6 +46,7 @@ const findUserChats = async (req, res) => {
 const findChat = async (req, res) => {
     const { firstId, secondId } = req.params;
     try {
+        //This function is designed to find a specific chat between two users.
         const chat = await chatModel.findOne({
             members: { $all: [firstId, secondId] },
         });
